@@ -13,7 +13,7 @@ Cloud based CMS
 
 * Get the latest code
 * npm install from the project root to get the latest dependencies 
-
+* to run the app locally make the build-run.sh file executable then run it with 2 arguments [target (build/local), env (whatever your target is)]
 ## Contributors
 * Travis McHattie
 * Jesse McCabe
