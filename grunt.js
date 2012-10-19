@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 
         dirs: {
             docs:  'docs',
+            modules: 'node_modules',
             local: 'application',
             dev:   'targets/dev',
             live:  'targets/live',
@@ -23,14 +24,9 @@ module.exports = function(grunt) {
 
         files: {
 
-            script:     '/script',
-            scripts:    '/scripts',
             assets:     '/public',
             views:     '/views',
-            vendor:     '/scripts/vendor',
-            coffee:     '/scripts/coffee',
-            javascript: '/scripts/javascript',
-            css:        '/css',
+            
 
             any: '**/*',
 
@@ -80,6 +76,11 @@ module.exports = function(grunt) {
                     src: project.dirs.local + project.files.views,
                     dest: project.dirs.tmp + "/" + project.dirs.local + project.files.views
                 },
+                modules: {
+                    src: project.dirs.modules,
+                    dest: project.dirs.tmpTarget() + "/" + project.dirs.modules
+                    
+                },
                 publish: {
                     src: project.dirs.tmpTarget(),
                     dest: project.dirs.target()
@@ -101,17 +102,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-coffee');
     grunt.loadNpmTasks('grunt-clean');
     grunt.loadNpmTasks('grunt-cp');
-    grunt.loadNpmTasks('grunt-reload');
-    grunt.loadNpmTasks('grunt-beautify');
-    grunt.loadNpmTasks('grunt-docco');
-    grunt.loadNpmTasks('grunt-css');
-    grunt.loadNpmTasks('grunt-requirejs');
-
+    
     grunt.loadTasks('./tasks/');
 
     // The main tasks.
     //commonTasks = 'clean:developer clean:appDocs clean:docs docco cp:docs coffee beautify';
-    commonTasks = 'clean:dev clean:live clean:tmp coffee cp:assets cp:views cp:publish clean:tmp';
+    commonTasks = 'clean:dev clean:live clean:tmp coffee cp:assets cp:views cp:modules cp:publish clean:tmp';
     grunt.registerTask('default', commonTasks);
     //grunt.registerTask('live',      commonTasks + ' requirejs cssmin clean:coffee clean:v1 clean:v2 clean:d1 clean:d2 clean:d3 clean:d4 clean:d5 clean:d6 clean:d7 clean:d8 clean:d9');
 
