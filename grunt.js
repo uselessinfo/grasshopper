@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
     // global instally docco and pygments
     // TODO: must be better way
-    var commonTasks,
+    var commonTasks,localTasks,
         argv = require('optimist').argv;
         
     var project = {
@@ -11,14 +11,13 @@ module.exports = function(grunt) {
             docs:  'docs',
             modules: 'node_modules',
             local: 'application',
-            dev:   'targets/dev',
-            live:  'targets/live',
             tmp:   'targets/tmp',
+            targets: 'targets',
             tmpTarget: function(){
                 return this.tmp + "/" + this.local;
             },
             target: function(){
-                return this[argv.env];
+                return 'targets/' + argv.env;
             }
         },
 
@@ -47,8 +46,7 @@ module.exports = function(grunt) {
             
             // Remove all junk from compiled only directories
             clean: {
-                dev:        project.dirs.dev,
-                live:       project.dirs.live,
+                targets:    project.dirs.targets + "/",
                 tmp:        project.dirs.tmp,
                 docs:       project.dirs.docs
             },
@@ -62,7 +60,7 @@ module.exports = function(grunt) {
                         bare: false,
                         preserve_dirs: true,
                         // Preserve the directory structure of coffee
-                        base_path: project.dirs.dev
+                        base_path: project.dirs.target()
                     }
                 }
             },
@@ -116,10 +114,13 @@ module.exports = function(grunt) {
 
     // The main tasks.
     //commonTasks = 'clean:developer clean:appDocs clean:docs docco cp:docs coffee beautify';
-    commonTasks = 'clean:dev clean:live clean:tmp coffee cp:assets cp:views cp:modules cp:publish clean:tmp';
-    localTasks = 'clean:dev clean:live clean:tmp coffee cp:publish clean:tmp symlink';
+    commonTasks = 'clean:tmp coffee cp:assets cp:views cp:modules cp:publish clean:tmp';
+    localTasks = 'clean:tmp coffee cp:publish clean:tmp symlink';
+    
+    grunt.registerTask('c', 'clean:targets');
     grunt.registerTask('build', commonTasks);
     grunt.registerTask('local', localTasks);
+    
     //grunt.registerTask('live',      commonTasks + ' requirejs cssmin clean:coffee clean:v1 clean:v2 clean:d1 clean:d2 clean:d3 clean:d4 clean:d5 clean:d6 clean:d7 clean:d8 clean:d9');
 
     //grunt.registerTask('reloadServer', 'server reload watch');
