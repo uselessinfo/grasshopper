@@ -85,6 +85,14 @@ module.exports = function(grunt) {
                     src: project.dirs.tmpTarget(),
                     dest: project.dirs.target()
                 }
+            },
+
+            symlink: {
+                links: [
+                    { link: project.dirs.target() + project.files.assets, to: __dirname + "/" + project.dirs.local + project.files.assets, type: 'dir'},
+                    { link: project.dirs.target() + project.files.views, to: __dirname + "/" + project.dirs.local + project.files.views, type: 'dir'},
+                    { link: project.dirs.target() + "/" + project.dirs.modules, to: __dirname + "/" + project.dirs.modules, type: 'dir'}
+                ]
             }
             
             //beautify: {
@@ -102,13 +110,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-coffee');
     grunt.loadNpmTasks('grunt-clean');
     grunt.loadNpmTasks('grunt-cp');
-    
+    grunt.loadNpmTasks('grunt-symlink');
+
     grunt.loadTasks('./tasks/');
 
     // The main tasks.
     //commonTasks = 'clean:developer clean:appDocs clean:docs docco cp:docs coffee beautify';
     commonTasks = 'clean:dev clean:live clean:tmp coffee cp:assets cp:views cp:modules cp:publish clean:tmp';
-    grunt.registerTask('default', commonTasks);
+    localTasks = 'clean:dev clean:live clean:tmp coffee cp:publish clean:tmp symlink';
+    grunt.registerTask('build', commonTasks);
+    grunt.registerTask('local', localTasks);
     //grunt.registerTask('live',      commonTasks + ' requirejs cssmin clean:coffee clean:v1 clean:v2 clean:d1 clean:d2 clean:d3 clean:d4 clean:d5 clean:d6 clean:d7 clean:d8 clean:d9');
 
     //grunt.registerTask('reloadServer', 'server reload watch');
