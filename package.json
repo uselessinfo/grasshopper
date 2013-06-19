@@ -2,32 +2,22 @@
     "name": "grasshopper",
     "description": "Cloud based CMS using NodeJS and MongoDB",
     "author": {
-        "name": "Travis McHattie",
-        "email": "travis.mchattie@thinksolid.com",
-        "url": "http://tjmchattie.com/"
+        "name": "Solid Interactive",
+        "email": "sales@thinksolid.com",
+        "url": "http://thinksolid.com/"
     },
-    "contributors": [{
-      "name": "Travis McHattie",
-      "email": "travis.mchattie@thinksolid.com"
-    },{
-      "name": "Jesse McCabe",
-      "email": "jesse.mccabe@thinksolid.com"
-    }],
+    "contributors": [],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:Solid-Interactive/grasshopper.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Solid-Interactive/grasshopper/issues"
+    },
     "version": "0.0.1",
     "dependencies": {
-        "lodash": ">=0.8.2",
-        "express":">=3.0.0rc5",
-        "jade":">=0.27.6",
-        "async" : ">=0.1.22",
-        "mongoose" : ">=3.3.1",
-        "formidable":">=1.0.11",
-        "grunt" : ">=0.3.17",
-        "mocha" : ">=1.6.0",
-        "optimist" : ">=0.3.5",
-        "grunt-clean": ">=0.3.0",
-        "grunt-coffee": ">=0.0.6",
-        "grunt-cp": ">=0.1.0",
-        "grunt-symlink": ">=0.1.1"
+        "express":"~3.2.2",
+        "connect":"~2.7.11"
     },
-    "engine": "node 0.8.11"
+    "engine": "node 0.10.05"
 }

@@ -7,18 +7,39 @@
 
 # What is Grasshopper?
 
-Cloud based CMS
+Project created to be a crawl/walk/run approach to learning node js. The goal of the project is to take a project from
+"Hello World!" all the way to a fully functional application.
+
+Solid Interactive is going to document the phases of the project and tag our iterations so someone looking to see how
+a full fledged application can come to life.
+
+We are going to follow the below track to complete the project.
+* Hello World
+* UI Frameworks
+* MVC
+* Modularization
+* Templating
+* Documentation/Configuration
+* Building
+* Unit Testing
+* Continuous Integration
+* Continuous Deployment
+* Database Integration
+* ORM
+
+----------
+
+More application specific requirements to follow.
+
 
 ## Getting Started
 
 * Get the latest code
-* npm install from the project root to get the latest dependencies 
-* to run the app locally make the build-run.sh file executable then run it with 2 arguments <target (build/local), env (whatever your target is)>
+* npm install from the project root to get the latest dependencies
 
 
 ## Contributors
-* Travis McHattie
-* Jesse McCabe
+* Solid Interactive Dev Team
 
 ## License
 
