@@ -1,38 +1,26 @@
-var connect = require('connect')
-    , http = require('http');
-
 /*
- * You are adding code but doing the same thing. Why would you use connect?
- * By adding connect then you get access to all of it's created middleware
- *      * csrf
- *      * basicAuth
- *      * bodyParser
- *      * json
- *      * multipart
- *      * urlencoded
- *      * cookieParser
- *      * directory
- *      * compress
- *      * errorHandler
- *      * favicon
- *      * limit
- *      * logger
- *      * methodOverride
- *      * query
- *      * responseTime
- *      * session
- *      * static
- *      * staticCache
- *      * vhost
- *      * subdomains
- *      * cookieSession
- */
-var app = connect()
-    .use(connect.static(__dirname + '/public'))
-    .use(function(req, res){
-        res.end('Hello World!\n');
-    });
+ * Features
 
-http.createServer(app).listen(8124);
+ Built on Connect
+ Robust routing
+ HTTP helpers (redirection, caching, etc)
+ View system supporting 14+ template engines
+ Content negotiation
+ Focus on high performance
+ Environment based configuration
+ Executable for generating applications quickly
+ High test coverage
+
+ */
+var express = require('express');
+var app = express();
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res){
+    res.send('Hello World!');
+});
+
+app.listen(8124);
 
 console.log('Server running at http://127.0.0.1:8124/');
