@@ -35,6 +35,7 @@ More application specific requirements to follow.
 ## Getting Started
 
 * Get the latest code
+* Clone the repo, switch to amsterdam-express, then, "node app/grasshopper.js" (install node via nvm if not already done)
 * npm install from the project root to get the latest dependencies
 
 
